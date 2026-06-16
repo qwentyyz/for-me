@@ -2,11 +2,28 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
-    <title>Мой первый ранкед в IT</title>
+    <title>Для моей любимки</title>
      <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
+    body {
+    background: #0f0f0f;
+    overflow-x: hidden;
+}
+
+.press-start-2p-regular {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 100vh;
+    margin: 0;
+}
     .my-pixel-art {
     width: 300px;           /* Размер */
     border: 5px solid red;  /* Своя рамка */
@@ -18,21 +35,7 @@
     margin-top: 30px;       /* Отступ от ссылки сверху */
     margin-bottom: 20px;    /* Отступ от края экрана снизу */
     border-radius: 20px;
-    box-shadow: 0 0 15px rgba(255, 0, 150, 0.3);
-}
-.press-start-2p-regular {
-  font-family: "Press Start 2P", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  background-color: #0f0f0f;
-  display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    margin-top: -50px;
-}
+    box-shadow: 0 0 15px rgba(255, 0, 150, 0.3);}
 a {
     color: purple; 
     text-decoration: none;
@@ -46,6 +49,35 @@ a:hover {
 .color-pink { color: #ff00ff; font-size: 50px;}
 .color-cyan { color: #00ffff; font-size: 30px; text-align: center; display: block;}
 .color-gold { color: #ffff00; font-size: 30px;}
+@keyframes float {
+    0%,100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+#hearts-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+
+.press-start-2p-regular > * {
+    position: relative;
+    z-index: 1;
+}
+.bg-heart {
+    position: absolute;
+    color: #ff00ff;
+
+    text-shadow:
+        0 0 5px #ff00ff,
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff;
+
+    animation: float 5s infinite ease-in-out;
+}
 </style>
 </head>
 <body class="press-start-2p-regular">
@@ -53,5 +85,24 @@ a:hover {
 <p class="color-cyan">Ты у меня самая любимая милая и красивая девочка на всем свете, для меня ты самое главное</p>
 <a href="https://www.youtube.com/watch?v=zuRLYprkwyY" class="color-gold"> Люблю тебя киса!</a>
 <img src="пара целуется.png" class="neon-heart" alt="Влюбленная пара в неоновом сердце">
+<div id="hearts-bg"></div>
 </body>
+<script>
+  const container = document.getElementById("hearts-bg");
+
+for(let i = 0; i < 80; i++) {
+    const heart = document.createElement("div");
+
+    heart.innerHTML = "💖";
+    heart.classList.add("bg-heart");
+
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.top = Math.random() * 100 + "%";
+    heart.style.fontSize = (20 + Math.random() * 40) + "px";
+    heart.style.animationDelay = Math.random() * 5 + "s";
+
+    container.appendChild(heart); 
+    heart.innerHTML = "♥";}
+alert("Привет, моя любимая! Я сделал эту страничку специально для тебя, чтобы показать, как сильно я тебя люблю! Ты - мое солнце, моя радость и мое вдохновение. Я хочу, чтобы ты всегда была счастлива и улыбалась. Я люблю тебя больше всего на свете!");
+</script>
 </html>
